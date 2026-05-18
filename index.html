@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How 4DMT Selected an AI Partner for BLA Readiness | Peer AI Case Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cetacean: #001946;
+    --independence: #474f67;
+    --amethyst: #9b8b98;
+    --poppy: #ff4e49;
+    --gray: #eeeeee;
+    --white: #ffffff;
+    --bg-section: #f8f8f9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    color: var(--cetacean);
+    background: var(--white);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---- NAV ---- */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 20px 32px;
+  }
+  .nav-logo {
+    font-family: 'Albert Sans', sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    color: var(--cetacean);
+    text-decoration: none;
+    letter-spacing: -0.03em;
+  }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a {
+    font-size: 14px;
+    color: var(--independence);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--cetacean); }
+  .nav-links .btn-contact {
+    background: var(--cetacean);
+    color: var(--white);
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.15s;
+  }
+  .nav-links .btn-contact:hover { background: #0a2d5c; }
+
+  /* ---- HERO ---- */
+  .hero {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 56px 32px 0;
+  }
+  .hero-company {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .hero-company img {
+    height: 40px;
+    width: auto;
+  }
+  .hero-company-name {
+    font-family: 'Albert Sans', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--cetacean);
+    letter-spacing: -0.015em;
+  }
+  .case-study-tag {
+    display: inline-block;
+    font-family: 'Albert Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--poppy);
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'Albert Sans', sans-serif;
+    font-size: clamp(28px, 4.5vw, 42px);
+    font-weight: 800;
+    line-height: 1.18;
+    color: var(--cetacean);
+    letter-spacing: -0.025em;
+    margin-bottom: 0;
+  }
+
+  /* ---- CONTENT ---- */
+  .content {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 32px 80px;
+  }
+  .content h2 {
+    font-family: 'Albert Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cetacean);
+    margin: 52px 0 18px;
+    letter-spacing: -0.015em;
+  }
+  .content p {
+    font-size: 16px;
+    color: var(--independence);
+    margin-bottom: 16px;
+  }
+  .content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+  }
+  .content ul li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 16px;
+    color: var(--independence);
+    margin-bottom: 14px;
+    line-height: 1.6;
+  }
+  .content ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--poppy);
+  }
+  .content ul li strong {
+    color: var(--cetacean);
+    font-weight: 600;
+  }
+
+  /* ---- BLOCKQUOTE ---- */
+  .quote-block {
+    margin: 40px 0;
+    padding: 32px 36px;
+    background: var(--bg-section);
+    border-left: 4px solid var(--poppy);
+    border-radius: 0 12px 12px 0;
+  }
+  .quote-block p {
+    font-size: 17px;
+    font-style: italic;
+    color: var(--cetacean);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .quote-block .attribution {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--cetacean);
+    margin-bottom: 2px;
+  }
+  .quote-block .attr-title {
+    font-size: 13px;
+    font-style: normal;
+    color: var(--amethyst);
+    font-weight: 400;
+  }
+
+  /* ---- CHART EMBED ---- */
+  .chart-box {
+    margin: 40px 0;
+    background: var(--white);
+    border: 1px solid #e8e7ea;
+    border-radius: 16px;
+    padding: 36px 40px 32px;
+  }
+  .chart-box h3 {
+    font-family: 'Albert Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--cetacean);
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .chart-box .chart-sub {
+    font-size: 13px;
+    color: var(--independence);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .chart-legend span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--independence);
+  }
+  .chart-legend span.peer-item { color: var(--cetacean); font-weight: 600; }
+  .chart-legend i {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .chart-area {
+    display: flex;
+    gap: 0;
+  }
+  .chart-y {
+    position: relative;
+    width: 28px;
+    flex-shrink: 0;
+  }
+  .chart-y span {
+    position: absolute;
+    right: 6px;
+    font-size: 11px;
+    color: var(--amethyst);
+    text-align: right;
+    line-height: 1;
+    transform: translateY(50%);
+  }
+  .chart-body {
+    flex: 1;
+    position: relative;
+  }
+  .chart-grid {
+    position: absolute;
+    inset: 0;
+  }
+  .chart-grid-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #eeecef;
+  }
+  .chart-cols {
+    position: relative;
+    display: flex;
+    height: 100%;
+  }
+  .chart-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .chart-col-bars {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 2px;
+    width: 100%;
+  }
+  .chart-col-label {
+    font-size: 10.5px;
+    color: var(--independence);
+    text-align: center;
+    padding-top: 8px;
+    line-height: 1.25;
+    flex-shrink: 0;
+  }
+  .cbar {
+    width: 14px;
+    border-radius: 0;
+    min-height: 0;
+    transition: opacity 0.15s;
+    position: relative;
+    cursor: default;
+  }
+  .cbar:hover { opacity: 0.75; z-index: 20; }
+  .cbar .ctip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--cetacean);
+    color: var(--white);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 10;
+    font-weight: 500;
+  }
+  .cbar:hover .ctip { display: block; }
+  .cbar-na {
+    width: 18px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .cbar-na span {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--independence);
+    padding: 2px 1px 3px;
+  }
+  .chart-footnotes {
+    margin-top: 20px;
+    text-align: center;
+  }
+  .chart-footnotes p {
+    font-size: 11px;
+    color: var(--amethyst);
+    margin-bottom: 2px;
+  }
+  @media (max-width: 640px) {
+    .chart-box { padding: 24px 16px 24px; }
+    .cbar { width: 10px; }
+    .chart-col-label { font-size: 9px; }
+  }
+
+  /* ---- FUNNEL STEPS ---- */
+  .funnel {
+    margin: 32px 0 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .funnel-bar {
+    border-radius: 10px;
+    padding: 20px 28px;
+    color: var(--white);
+    font-family: 'Albert Sans', sans-serif;
+    line-height: 1.35;
+  }
+  .funnel-bar-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .funnel-bar-sub {
+    font-size: 13px;
+    font-weight: 400;
+    opacity: 0.85;
+    line-height: 1.45;
+  }
+  .funnel-bar.step-1 { background: var(--cetacean); }
+  .funnel-bar.step-2 { background: #2d3556; }
+  .funnel-bar.step-3 { background: var(--independence); }
+  .funnel-bar.step-4 { background: var(--amethyst); }
+  .funnel-bar.step-5 { background: var(--poppy); }
+
+  .funnel-arrow {
+    display: flex;
+    padding: 4px 0;
+  }
+  .funnel-arrow svg {
+    display: block;
+  }
+
+  /* staircase offsets: steps and their preceding arrows */
+  .funnel-row { padding-left: 0; }
+  .funnel-row:nth-child(2) { padding-left: 15px; }
+  .funnel-row:nth-child(3) { padding-left: 30px; }
+  .funnel-row:nth-child(4) { padding-left: 45px; }
+  .funnel-row:nth-child(5) { padding-left: 60px; }
+  .funnel-row:nth-child(6) { padding-left: 75px; }
+  .funnel-row:nth-child(7) { padding-left: 90px; }
+  .funnel-row:nth-child(8) { padding-left: 105px; }
+  .funnel-row:nth-child(9) { padding-left: 120px; }
+
+  @media (max-width: 640px) {
+    .funnel-row { padding-left: 0 !important; }
+    .funnel-bar { font-size: 13px; padding: 14px 16px; }
+    .funnel-bar-title { font-size: 15px; }
+  }
+
+  /* ---- DIVIDER ---- */
+  .section-divider {
+    height: 1px;
+    background: var(--gray);
+    margin: 48px 0 0;
+  }
+
+  /* ---- CTA ---- */
+  .cta {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 64px 32px 80px;
+    text-align: center;
+  }
+  .cta h2 {
+    font-family: 'Albert Sans', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--cetacean);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+  .cta p {
+    font-size: 16px;
+    color: var(--independence);
+    margin-bottom: 28px;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--poppy);
+    color: var(--white);
+    font-family: 'Albert Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 14px 36px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.15s, transform 0.1s;
+  }
+  .cta-btn:hover { background: #e6403c; transform: translateY(-1px); }
+
+  /* ---- FOOTER ---- */
+  .footer {
+    background: var(--cetacean);
+    color: rgba(255,255,255,0.55);
+    padding: 56px 32px 36px;
+  }
+  .footer-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .footer-logo {
+    font-family: 'Albert Sans', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .footer-col h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+  }
+  .footer-col a {
+    display: block;
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.15s;
+  }
+  .footer-col a:hover { color: var(--white); }
+  .footer-bottom {
+    max-width: 1140px;
+    margin: 40px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 13px;
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 640px) {
+    .nav-links a:not(.btn-contact) { display: none; }
+    .hero { padding-top: 36px; }
+    .hero h1 { font-size: 26px; }
+    .hero-company-name { font-size: 20px; }
+    .hero-company img { height: 32px; }
+    .content h2 { font-size: 19px; margin-top: 40px; }
+    .cta h2 { font-size: 22px; }
+    .footer-inner { flex-direction: column; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="gate" style="position:fixed;inset:0;background:#fff;z-index:9999;display:flex;align-items:center;justify-content:center;font-family:'Albert Sans',sans-serif;">
+  <div style="text-align:center;max-width:360px;padding:32px;">
+    <div style="font-size:24px;font-weight:800;color:#001946;margin-bottom:8px;">peer</div>
+    <p style="font-size:14px;color:#474f67;margin-bottom:24px;">Enter the password to view this case study.</p>
+    <input id="pw" type="password" placeholder="Password" style="width:100%;padding:12px 16px;border:1px solid #e8e7ea;border-radius:8px;font-size:15px;font-family:Inter,sans-serif;outline:none;margin-bottom:12px;" onkeydown="if(event.key==='Enter')checkPw()">
+    <button onclick="checkPw()" style="width:100%;padding:12px;background:#ff4e49;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Albert Sans',sans-serif;">View case study</button>
+    <p id="err" style="font-size:12px;color:#ff4e49;margin-top:10px;display:none;">Incorrect password.</p>
+  </div>
+</div>
+<script>
+function checkPw(){
+  var p=document.getElementById("pw").value;
+  // Change this password to whatever you want
+  if(p==="peer2026"){
+    document.getElementById("gate").style.display="none";
+  } else {
+    document.getElementById("err").style.display="block";
+    document.getElementById("pw").value="";
+  }
+}
+</script>
+
+
+
+<!-- HERO -->
+<header class="hero">
+  <span class="case-study-tag">Case Study</span>
+  <div class="hero-company">
+    <img src="data:image/jpeg;base64,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" alt="4D Molecular Therapeutics logo">
+    <span class="hero-company-name">4D Molecular Therapeutics</span>
+  </div>
+  <h1>Evaluating and selecting an AI partner for BLA readiness</h1>
+</header>
+
+<!-- CONTENT -->
+<main class="content">
+
+  <p>4D Molecular Therapeutics (4DMT) is a clinical-stage gene therapy company developing treatments for retinal and pulmonary diseases. With its lead candidate advancing toward a Biologics License Application (BLA), the company set an ambitious goal: BLA submission within 3 months of database lock. Traditional CSR first draft generation alone takes 4 to 6 weeks, and the team had no dedicated medical writer. 4DMT needed an AI partner that could deliver at the speed and quality the submission demanded.</p>
+
+  <div class="section-divider"></div>
+
+  <h2>Challenge</h2>
+  <ul>
+    <li><strong>An aggressive timeline with a lean team.</strong> BLA preparation spans dozens of documents, including CSRs, Module 2 summaries, and patient narratives. Without a medical writer on staff, 4DMT needed a platform that could produce high-quality first drafts at scale.</li>
+    <li><strong>A crowded vendor landscape with uneven capabilities.</strong> Multiple vendors offered AI-powered content generation for regulatory submissions, but their actual capabilities varied widely. Without a standardized way to compare them, selecting the wrong partner carried real risk.</li>
+    <li><strong>Non-negotiable compliance requirements.</strong> Any solution would need to satisfy enterprise-grade requirements for data encryption, hosting, system integration, and GxP compliance before it could touch submission-critical content.</li>
+  </ul>
+
+  <h2>The Approach</h2>
+  <p>4DMT assembled a cross-functional team: regulatory affairs defined the evaluation strategy and scoring criteria, project management coordinated the process, and IT and GxP specialists assessed each vendor's security and compliance posture.</p>
+
+  <div class="funnel">
+    <div class="funnel-row">
+      <div class="funnel-bar step-1"><div class="funnel-bar-title">10 vendors identified</div><div class="funnel-bar-sub">Vendors with out-of-the-box AI capabilities for regulatory content generation</div></div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-arrow"><svg width="24" height="28" viewBox="0 0 24 28"><path d="M12 0 L12 20 M4 14 L12 22 L20 14" stroke="#9b8b98" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-bar step-2"><div class="funnel-bar-title">Live demos and comparative capability assessments</div><div class="funnel-bar-sub">Scored across data security, template customization, design, and source data traceability</div></div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-arrow"><svg width="24" height="28" viewBox="0 0 24 28"><path d="M12 0 L12 20 M4 14 L12 22 L20 14" stroke="#9b8b98" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-bar step-3"><div class="funnel-bar-title">4 vendors shortlisted for pilot trial</div><div class="funnel-bar-sub">NDAs and statements of work signed; same source data provided to each vendor</div></div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-arrow"><svg width="24" height="28" viewBox="0 0 24 28"><path d="M12 0 L12 20 M4 14 L12 22 L20 14" stroke="#9b8b98" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-bar step-4"><div class="funnel-bar-title">Comprehensive evaluation of AI-generated vs human-written CSR</div><div class="funnel-bar-sub">50+ metrics scored by 3 independent reviewers. IT and GxP compliance evaluated.</div></div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-arrow"><svg width="24" height="28" viewBox="0 0 24 28"><path d="M12 0 L12 20 M4 14 L12 22 L20 14" stroke="#9b8b98" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-bar step-5"><div class="funnel-bar-title">Peer AI selected</div></div>
+    </div>
+  </div>
+
+  <h2>Pilot Trial Results</h2>
+
+  <!-- EMBEDDED CHART -->
+  <div class="chart-box">
+    <h3>Vendor Evaluation Scores</h3>
+    <p class="chart-sub">AI-generated CSRs evaluated across 50+ metrics by 3 independent reviewers</p>
+    <div class="chart-legend">
+      <span class="peer-item"><i style="background:#ff4e49"></i>Peer AI</span>
+      <span><i style="background:#b8b9c2"></i>Vendor 2</span>
+      <span><i style="background:#001946"></i>Vendor 3</span>
+      <span><i style="background:#9b8b98"></i>Vendor 4</span>
+    </div>
+    <div class="chart-area" id="chartArea"></div>
+    <div class="chart-footnotes">
+      <p>Scores represent sum of 3 independent reviewer ratings (1-4 scale per reviewer, max 12)</p>
+      <p>*Evaluation completed prior to UX review.</p>
+    </div>
+  </div>
+
+    <h2>Why 4DMT Selected Peer AI</h2>
+  <p>The scoring model identified Peer AI as the top-performing vendor across evaluation criteria.</p>
+  <ul>
+    <li><strong>Consistent quality leadership.</strong> Peer AI scored highest or tied for highest across accuracy, completeness, readability, consistency, and other quality metrics evaluated by the independent reviewers.</li>
+    <li><strong>End-to-end workflow fit.</strong> Source documents went in; a first draft CSR came out, with source data verified, formatting aligned to the client template, and summaries drafted. That direct path fit the team's lean operating model.</li>
+    <li><strong>Enterprise compliance cleared.</strong> Peer AI's responses to IT and GxP questionnaires satisfied 4DMT's requirements across data encryption, secure hosting, and system integration.</li>
+    <li><strong>Collaborative partnership through the pilot.</strong> The Peer AI team worked closely with 4DMT to understand specific needs and refine outputs, building confidence the relationship would scale beyond the evaluation.</li>
+  </ul>
+
+  <div class="quote-block">
+    <p>"We performed side-by-side comparisons of AI-generated outputs versus human-written CSRs. We developed a robust QC checklist to evaluate formatting, accuracy, readability, and redundancy, and translated findings into a data-driven scoring model. This approach enabled us to successfully identify Peer AI as the optimal partner to support our BLA preparation."</p>
+    <div class="attribution">Catherine Campbell</div>
+    <div class="attr-title">VP Regulatory Affairs, 4D Molecular Therapeutics</div>
+  </div>
+
+  <h2>Human in the Loop</h2>
+  <p>4DMT was clear-eyed about where AI adds value and where human expertise remains essential. The team's framework placed AI in the domain of automation, execution, scale, and speed. Judgment, higher-order communication, key messaging, ethics, decision-making, and verification stayed with the human team. This distinction shaped how vendors were evaluated and how 4DMT plans to integrate AI into its submission workflow.</p>
+
+
+  <h2>Looking Ahead</h2>
+  <p>With Peer AI selected as the company's AI partner for regulatory content, 4DMT is positioned to accelerate its BLA preparation timeline, targeting submission within 3 months of database lock. The team expects cost savings of more than 50% and time savings of more than 80% compared with traditional authoring approaches, while maintaining comparable quality.</p>
+  <p>The structured evaluation process also serves as a reusable framework. As 4DMT builds internal governance around AI use, the scoring rubric, QC checklist, and cross-functional review model the team developed can guide future technology decisions across the organization and serve as a reference for other companies navigating the growing landscape of AI vendors for regulated content.</p>
+
+</main>
+
+
+
+
+
+<script>
+(function() {
+  const data = [
+    { label: "Accuracy",      scores: [11, 11, 10, 4] },
+    { label: "Completeness",  scores: [10, 10,  6, 2] },
+    { label: "Readability",   scores: [11,  9,  8, 5] },
+    { label: "Reliability",   scores: [12, 12,  8, 5] },
+    { label: "Consistency",   scores: [12, 11,  9, 4] },
+    { label: "Clarity",       scores: [12, 10,  7, 5] },
+    { label: "Conciseness",   scores: [11, 10,  8, 6] },
+    { label: "User Friendly", scores: [null, 10, 10, 1] },
+    { label: "Emphasis",      scores: [10, 11,  6, "na"] }
+  ];
+  const colors = ["#ff4e49", "#b8b9c2", "#001946", "#9b8b98"];
+  const names  = ["Peer AI", "Vendor 2", "Vendor 3", "Vendor 4"];
+  const max = 12;
+  const H = 220; // bar area height in px
+
+  const area = document.getElementById("chartArea");
+
+  // Y-axis
+  const yDiv = document.createElement("div");
+  yDiv.className = "chart-y";
+  yDiv.style.height = H + "px";
+  for (let v = 0; v <= max; v += 2) {
+    const s = document.createElement("span");
+    s.textContent = v;
+    s.style.bottom = (v / max * H) + "px";
+    yDiv.appendChild(s);
+  }
+  area.appendChild(yDiv);
+
+  // Body (gridlines + columns)
+  const body = document.createElement("div");
+  body.className = "chart-body";
+  body.style.height = (H + 30) + "px"; // bars + label
+
+  // Gridlines
+  const grid = document.createElement("div");
+  grid.className = "chart-grid";
+  grid.style.height = H + "px";
+  for (let v = 0; v <= max; v += 2) {
+    const line = document.createElement("div");
+    line.className = "chart-grid-line";
+    line.style.bottom = (v / max * H) + "px";
+    grid.appendChild(line);
+  }
+  body.appendChild(grid);
+
+  // Columns
+  const cols = document.createElement("div");
+  cols.className = "chart-cols";
+  cols.style.height = (H + 30) + "px";
+
+  data.forEach(m => {
+    const col = document.createElement("div");
+    col.className = "chart-col";
+
+    const barsWrap = document.createElement("div");
+    barsWrap.className = "chart-col-bars";
+    barsWrap.style.height = H + "px";
+
+    m.scores.forEach((s, i) => {
+      if (s === null || s === "na") {
+        const na = document.createElement("div");
+        na.className = "cbar-na";
+        na.style.height = H + "px";
+        const t = document.createElement("span");
+        if (s === null) {
+          t.textContent = "N/A*";
+        } else {
+          t.textContent = "N/A";
+        }
+        na.appendChild(t);
+        barsWrap.appendChild(na);
+        return;
+      }
+      const bar = document.createElement("div");
+      bar.className = "cbar";
+      bar.style.height = Math.max(s / max * H, s > 0 ? 2 : 0) + "px";
+      bar.style.background = colors[i];
+      const tip = document.createElement("span");
+      tip.className = "ctip";
+      tip.textContent = names[i] + ": " + s + "/12";
+      bar.appendChild(tip);
+      barsWrap.appendChild(bar);
+    });
+
+    col.appendChild(barsWrap);
+
+    const lbl = document.createElement("div");
+    lbl.className = "chart-col-label";
+    lbl.textContent = m.label;
+    col.appendChild(lbl);
+
+    cols.appendChild(col);
+  });
+
+  body.appendChild(cols);
+  area.appendChild(body);
+})();
+</script>
+
+</body>
+</html>
