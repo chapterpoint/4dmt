@@ -270,6 +270,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
   }
   .chart-col-bars {
     flex: 1;
@@ -280,12 +281,15 @@
     width: 100%;
   }
   .chart-col-label {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
     font-size: 10.5px;
     color: var(--independence);
     text-align: center;
     padding-top: 8px;
     line-height: 1.25;
-    flex-shrink: 0;
   }
   .cbar {
     width: 14px;
@@ -689,7 +693,6 @@ function checkPw(){
   data.forEach(m => {
     const col = document.createElement("div");
     col.className = "chart-col";
-    col.style.height = H + "px"; // pin height so barsWrap (flex:1) fills exactly H
 
     const barsWrap = document.createElement("div");
     barsWrap.className = "chart-col-bars";
@@ -732,6 +735,7 @@ function checkPw(){
 
   body.appendChild(cols);
   rightCol.appendChild(body);
+  rightCol.style.paddingBottom = "36px"; // space for absolute-positioned labels
   area.appendChild(rightCol);
 })();
 </script>
