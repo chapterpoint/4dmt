@@ -685,7 +685,7 @@ function checkPw(){
   // Columns (bars only, no labels)
   const cols = document.createElement("div");
   cols.className = "chart-cols";
-  cols.style.height = H + "px";
+  cols.style.cssText = "height:" + H + "px;gap:10px;";
 
   data.forEach(m => {
     const col = document.createElement("div");
@@ -738,7 +738,7 @@ function checkPw(){
 
   const labelCols = document.createElement("div");
   labelCols.className = "chart-cols";
-  labelCols.style.height = "auto";
+  labelCols.style.cssText = "height:auto;flex:1;gap:10px;";
 
   data.forEach(m => {
     const lbl = document.createElement("div");
