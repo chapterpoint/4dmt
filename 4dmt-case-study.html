@@ -689,6 +689,7 @@ function checkPw(){
   data.forEach(m => {
     const col = document.createElement("div");
     col.className = "chart-col";
+    col.style.height = H + "px"; // pin height so barsWrap (flex:1) fills exactly H
 
     const barsWrap = document.createElement("div");
     barsWrap.className = "chart-col-bars";
@@ -720,26 +721,17 @@ function checkPw(){
     });
 
     col.appendChild(barsWrap);
+
+    const lbl = document.createElement("div");
+    lbl.className = "chart-col-label";
+    lbl.textContent = m.label;
+    col.appendChild(lbl);
+
     cols.appendChild(col);
   });
 
   body.appendChild(cols);
   rightCol.appendChild(body);
-
-  // Label row — sits below bar body, aligned to columns via same gap
-  const labelCols = document.createElement("div");
-  labelCols.className = "chart-cols";
-  labelCols.style.cssText = "height:auto;gap:10px;";
-
-  data.forEach(m => {
-    const lbl = document.createElement("div");
-    lbl.className = "chart-col-label";
-    lbl.style.flex = "1";
-    lbl.textContent = m.label;
-    labelCols.appendChild(lbl);
-  });
-
-  rightCol.appendChild(labelCols);
   area.appendChild(rightCol);
 })();
 </script>
