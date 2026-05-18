@@ -646,7 +646,12 @@ function checkPw(){
   const max = 12;
   const H = 220; // bar area height in px
 
+  const Y_WIDTH = 28;
   const area = document.getElementById("chartArea");
+
+  // Top row: y-axis + bar area (both exactly H px tall)
+  const topRow = document.createElement("div");
+  topRow.style.cssText = "display:flex;align-items:stretch;";
 
   // Y-axis
   const yDiv = document.createElement("div");
@@ -658,12 +663,12 @@ function checkPw(){
     s.style.bottom = (v / max * H) + "px";
     yDiv.appendChild(s);
   }
-  area.appendChild(yDiv);
+  topRow.appendChild(yDiv);
 
-  // Body (gridlines + columns)
+  // Body (gridlines + columns) — exactly H px, no label space
   const body = document.createElement("div");
   body.className = "chart-body";
-  body.style.height = (H + 30) + "px"; // bars + label
+  body.style.height = H + "px";
 
   // Gridlines
   const grid = document.createElement("div");
@@ -677,10 +682,10 @@ function checkPw(){
   }
   body.appendChild(grid);
 
-  // Columns
+  // Columns (bars only, no labels)
   const cols = document.createElement("div");
   cols.className = "chart-cols";
-  cols.style.height = (H + 30) + "px";
+  cols.style.height = H + "px";
 
   data.forEach(m => {
     const col = document.createElement("div");
@@ -688,13 +693,12 @@ function checkPw(){
 
     const barsWrap = document.createElement("div");
     barsWrap.className = "chart-col-bars";
-    barsWrap.style.height = H + "px";
 
     m.scores.forEach((s, i) => {
       if (s === null || s === "na") {
         const na = document.createElement("div");
         na.className = "cbar-na";
-        na.style.height = H + "px";
+        na.style.height = "100%";
         const t = document.createElement("span");
         if (s === null) {
           t.textContent = "N/A*";
@@ -717,17 +721,35 @@ function checkPw(){
     });
 
     col.appendChild(barsWrap);
-
-    const lbl = document.createElement("div");
-    lbl.className = "chart-col-label";
-    lbl.textContent = m.label;
-    col.appendChild(lbl);
-
     cols.appendChild(col);
   });
 
   body.appendChild(cols);
-  area.appendChild(body);
+  topRow.appendChild(body);
+  area.appendChild(topRow);
+
+  // Label row — separate from bar area so it doesn't affect bar heights
+  const labelRow = document.createElement("div");
+  labelRow.style.cssText = "display:flex;align-items:flex-start;";
+
+  const spacer = document.createElement("div");
+  spacer.style.cssText = "width:" + Y_WIDTH + "px;flex-shrink:0;";
+  labelRow.appendChild(spacer);
+
+  const labelCols = document.createElement("div");
+  labelCols.className = "chart-cols";
+  labelCols.style.height = "auto";
+
+  data.forEach(m => {
+    const lbl = document.createElement("div");
+    lbl.className = "chart-col-label";
+    lbl.style.flex = "1";
+    lbl.textContent = m.label;
+    labelCols.appendChild(lbl);
+  });
+
+  labelRow.appendChild(labelCols);
+  area.appendChild(labelRow);
 })();
 </script>
 
